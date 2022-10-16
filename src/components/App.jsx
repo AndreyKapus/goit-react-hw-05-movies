@@ -1,16 +1,15 @@
+import { fetchMovies } from '../Servises/fetchMovies';
+import { Routes, Route } from 'react-router-dom';
+import { PopularMovis } from '../components/Pages/Home';
+const axios = require('axios').default;
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <PopularMovis />
+      <Routes>
+        <Route path="/" />
+      </Routes>
     </div>
   );
 };
