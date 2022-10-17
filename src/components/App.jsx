@@ -1,14 +1,21 @@
 import { fetchMovies } from '../Servises/fetchMovies';
 import { Routes, Route } from 'react-router-dom';
-import { PopularMovis } from '../components/Pages/Home';
+import { PopularMovies } from '../components/Pages/Home';
+import { AppBar } from './services/AppBar';
+import { Movies } from './Pages/Movies';
+import { MovieDetails } from './Pages/MovieDetails';
 const axios = require('axios').default;
 
 export const App = () => {
   return (
     <div>
-      <PopularMovis />
+      <header>
+        <AppBar />
+      </header>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<PopularMovies exact />} />
+        <Route path="/movies" element={<Movies exact />} />
+        <Route path="//movies/:movieId" element={<MovieDetails exact />} />
       </Routes>
     </div>
   );

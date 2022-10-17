@@ -1,25 +1,27 @@
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { fetchMovies } from 'Servises/fetchMovies';
 
-export const PopularMovis = () => {
+export function PopularMovies() {
   const [popMovies, setPopMovies] = useState([]);
 
   useEffect(() => {
     fetchMovies().then(movies => setPopMovies(movies));
   }, []);
 
-  const trendingMovies = popMovies.map(({ movie, id }) => (
-    <li key={id}>
-      <link to={`${movie}`}>{movie.name}</link>
-    </li>
-  ));
-
   return (
     <div>
       <h1>Trending tooday</h1>
       <ul>
-        <li>{trendingMovies}</li>
+        {popMovies &&
+          popMovies.map(({ movie, id, title }) => (
+            <li key={id}>
+              <NavLink to={`${movie}`} movie={movie}>
+                {title}
+              </NavLink>
+            </li>
+          ))}
       </ul>
     </div>
   );
-};
+}

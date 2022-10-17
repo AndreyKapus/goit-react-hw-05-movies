@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MovieDetails } from 'components/Pages/MovieDetails';
 
 const API = '7f79b9469f05b818a5fcd6a2e700e54b';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -9,4 +10,11 @@ export async function fetchMovies() {
     .then(result => result.data.results);
   return response;
 }
-console.log(fetchMovies());
+
+export async function fetchMovieById(movieId) {
+  const response = await axios
+    .get(`${BASE_URL}/movie/${movieId}?api_key=${API}`)
+    .then(result => result.data.results);
+  return response;
+}
+console.log(fetchMovieById());
