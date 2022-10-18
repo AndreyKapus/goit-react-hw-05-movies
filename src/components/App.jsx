@@ -4,7 +4,6 @@ import { PopularMovies } from '../components/Pages/Home';
 import { AppBar } from './services/AppBar';
 import { Movies } from './Pages/Movies';
 import { MovieDetails } from './Pages/MovieDetails';
-const axios = require('axios').default;
 
 export const App = () => {
   return (
@@ -15,7 +14,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<PopularMovies exact />} />
         <Route path="/movies" element={<Movies exact />} />
-        <Route path="//movies/:movieId" element={<MovieDetails exact />} />
+        <Route path="movies/:movieId" element={<MovieDetails exact />} />
       </Routes>
     </div>
   );

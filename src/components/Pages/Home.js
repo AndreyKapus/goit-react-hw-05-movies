@@ -16,7 +16,12 @@ export function PopularMovies() {
         {popMovies &&
           popMovies.map(({ movie, id, title }) => (
             <li key={id}>
-              <NavLink to={`${movie}`} movie={movie}>
+              <NavLink
+                to={{
+                  pathname: `/movies/${id}`,
+                }}
+                movie={movie}
+              >
                 {title}
               </NavLink>
             </li>
