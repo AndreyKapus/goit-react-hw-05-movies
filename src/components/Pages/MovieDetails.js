@@ -6,7 +6,7 @@ import { fetchMovieById } from 'Servises/fetchMovies';
 export const MovieDetails = () => {
   const [aboutMovie, setAboutMovie] = useState(null);
   const { movieId } = useParams();
-  console.log(movieId);
+
   // const movie = fetchMovieById(movieId);
 
   useEffect(() => {
@@ -23,13 +23,17 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      {' '}
-      movieId {movieId}
-      <img src="{https://image.tmdb.org/t/p/w300/movie.poster_path}" alt="" />
-      <h2>{aboutMovie.title}</h2>
+      <img
+        src={`https://image.tmdb.org/t/p/w300${aboutMovie.poster_path}`}
+        alt=""
+      />
+      <h2>
+        {aboutMovie.title} {aboutMovie.release_date.slice(0, 4)}
+      </h2>
+      <p>Vote average: {aboutMovie.vote_average}</p>
       <h3>Overview</h3>
       <p>{aboutMovie.overview}</p>
-      <p>{aboutMovie}</p>
+      <p>Genre: {aboutMovie.genres.map(({ name }) => name).join(' ')}</p>
       <NavLink to={`movies/${movieId}/reviews`}>Reviews</NavLink>
       <NavLink to={`movies/${movieId}/cast`}>Cast</NavLink>
       <Outlet />

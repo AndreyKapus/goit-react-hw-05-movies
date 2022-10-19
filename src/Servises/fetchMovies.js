@@ -18,6 +18,15 @@ export async function fetchMovies() {
 export async function fetchMovieById(movieId) {
   const response = await axios
     .get(`${BASE_URL}/movie/${movieId}?api_key=${API}&language=en-US`)
-    .then(result => result.data.results);
+    .then(result => result.data);
+  return response;
+}
+
+//  Жанры ------------------
+
+export async function fetchMovieCast(movieId) {
+  const response = await axios
+    .get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API}&language=en-US`)
+    .then(result => result.data);
   return response;
 }
