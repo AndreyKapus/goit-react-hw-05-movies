@@ -30,3 +30,12 @@ export async function fetchMovieCast(movieId) {
     .then(result => result.data);
   return response;
 }
+
+// Ревью --------------------
+
+export async function fetchMovieReview(movieId) {
+  const response = await axios
+    .get(`${BASE_URL}/movie/${movieId}/reviews?api_key=${API}&language=en-US`)
+    .then(result => result.data);
+  return response;
+}

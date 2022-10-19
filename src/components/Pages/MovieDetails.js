@@ -15,8 +15,6 @@ export const MovieDetails = () => {
     });
   }, [movieId]);
 
-  console.log(aboutMovie);
-
   if (!aboutMovie) {
     return null;
   }

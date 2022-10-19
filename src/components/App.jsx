@@ -5,6 +5,7 @@ import { AppBar } from './services/AppBar';
 import { Movies } from './Pages/Movies';
 import { MovieDetails } from './Pages/MovieDetails';
 import { Cast } from './Cast';
+import { Reviews } from './Reviews';
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies exact />} />
         <Route path="movies/:movieId" element={<MovieDetails exact />}>
           <Route path="movies/:movieId/cast" element={<Cast />} />
+          <Route path="movies/:movieId/reviews" element={<Reviews />} />
         </Route>
       </Routes>
     </div>

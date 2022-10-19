@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieCast } from '../Servises/fetchMovies';
-import { MovieDetails } from './Pages/MovieDetails';
 
 export const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
@@ -18,7 +17,6 @@ export const Cast = () => {
       )
       .then(castData => setMovieCast(castData));
   }, [movieId]);
-  console.log(movieCast);
 
   if (!movieCast) {
     return null;
