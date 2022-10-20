@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { MovieDetails } from 'components/Pages/MovieDetails';
 
 const API = '7f79b9469f05b818a5fcd6a2e700e54b';
 const BASE_URL = 'https://api.themoviedb.org/3';

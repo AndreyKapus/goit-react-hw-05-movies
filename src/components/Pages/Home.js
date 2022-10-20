@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { fetchMovies } from 'Servises/fetchMovies';
+import { Title, MovieList, StyledLink, StyledUl } from 'Styles/Home.styled';
 
 export function PopularMovies() {
   const [popMovies, setPopMovies] = useState([]);
@@ -11,22 +12,22 @@ export function PopularMovies() {
 
   return (
     <div>
-      <h1>Trending tooday</h1>
-      <ul>
+      <Title>Trending tooday</Title>
+      <StyledUl>
         {popMovies &&
           popMovies.map(({ movie, id, title }) => (
-            <li key={id}>
-              <NavLink
+            <MovieList key={id}>
+              <StyledLink
                 to={{
                   pathname: `/movies/${id}`,
                 }}
                 movie={movie}
               >
                 {title}
-              </NavLink>
-            </li>
+              </StyledLink>
+            </MovieList>
           ))}
-      </ul>
+      </StyledUl>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useLocation, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const GoBackButton = ({ backLinkRef }) => {
   return (

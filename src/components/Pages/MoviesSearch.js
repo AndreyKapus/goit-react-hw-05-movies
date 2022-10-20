@@ -1,4 +1,3 @@
-import { queryAllByAltText } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { fetchMovieByQuery } from 'Servises/fetchMovies';
 import { useSearchParams } from 'react-router-dom';
