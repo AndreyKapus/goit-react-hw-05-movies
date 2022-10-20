@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchMovieReview } from 'Servises/fetchMovies';
 import { MovieDetails } from './Pages/MovieDetails';
 
@@ -26,7 +26,7 @@ export const Reviews = () => {
 
   return (
     <div>
-      {review && (
+      {review.length > 0 ? (
         <div>
           {review.map(({ author, content, id }) => (
             <div key={id}>
@@ -35,8 +35,9 @@ export const Reviews = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <div>Sorry, no review :( </div>
       )}
-      <Outlet />
     </div>
   );
 };

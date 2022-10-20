@@ -1,18 +1,25 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'Servises/fetchMovies';
+import { GoBackButton } from 'components/GoBackBtn';
+import { Loader } from 'components/Loader';
 
 export const MovieDetails = () => {
   const [aboutMovie, setAboutMovie] = useState(null);
   const { movieId } = useParams();
+  const [status, setStatus] = useState(false);
+
+  const location = useLocation();
+  const backLinkRef = location.state?.from ?? '/';
 
   // const movie = fetchMovieById(movieId);
 
   useEffect(() => {
+    setStatus(true);
     fetchMovieById(movieId).then(movie => {
       setAboutMovie(movie);
     });
+    setStatus(false);
   }, [movieId]);
 
   if (!aboutMovie) {
@@ -21,6 +28,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      <GoBackButton backLinkRef={backLinkRef} />
       <img
         src={`https://image.tmdb.org/t/p/w300${aboutMovie.poster_path}`}
         alt=""
@@ -35,6 +43,7 @@ export const MovieDetails = () => {
       <NavLink to={`movies/${movieId}/reviews`}>Reviews</NavLink>
       <NavLink to={`movies/${movieId}/cast`}>Cast</NavLink>
       <Outlet />
+      {status && <Loader />}
     </div>
   );
 };

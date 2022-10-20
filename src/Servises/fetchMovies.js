@@ -39,3 +39,14 @@ export async function fetchMovieReview(movieId) {
     .then(result => result.data);
   return response;
 }
+
+//  Поиск ------------------
+
+export async function fetchMovieByQuery(query) {
+  const response = await axios
+    .get(
+      `${BASE_URL}/search/movie?api_key=${API}&query=${query}&language=en-US`
+    )
+    .then(result => result.data);
+  return response;
+}
