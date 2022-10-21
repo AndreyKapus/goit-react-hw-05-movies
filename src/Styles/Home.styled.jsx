@@ -22,6 +22,7 @@ export const StyledLink = styled(NavLink)`
   display: block;
   text-decoration: none;
   text-align: center;
+  color: gray;
 `;
 
 export const StyledUl = styled.ul`

@@ -1,5 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {
+  SearchResultList,
+  ListItem,
+  List,
+} from '../Styles/MovieSearchResult.styled';
 
 export const MoviesList = ({ movies, titlePage = null }) => {
   const location = useLocation();
@@ -8,15 +13,15 @@ export const MoviesList = ({ movies, titlePage = null }) => {
     <>
       {titlePage && <h1>{titlePage}</h1>}
 
-      <ul>
+      <SearchResultList>
         {movies.map(({ id, title, name }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={{ from: location }}>
+          <List key={id}>
+            <ListItem to={`/movies/${id}`} state={{ from: location }}>
               {title || name}
-            </Link>
-          </li>
+            </ListItem>
+          </List>
         ))}
-      </ul>
+      </SearchResultList>
     </>
   );
 };
@@ -24,7 +29,7 @@ export const MoviesList = ({ movies, titlePage = null }) => {
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number,
       title: PropTypes.string,
       name: PropTypes.string,
     }).isRequired

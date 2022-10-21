@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams, useLocation } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieById } from 'Servises/fetchMovies';
 import { GoBackButton } from 'components/GoBackBtn';
 import { Loader } from 'components/Loader';
+import {
+  Container,
+  Img,
+  MovieDetailsContainer,
+  StyledLink,
+  Genre,
+  LinkList,
+} from '../../Styles/MovieDetails';
 
 export const MovieDetails = () => {
   const [aboutMovie, setAboutMovie] = useState(null);
@@ -27,23 +35,33 @@ export const MovieDetails = () => {
   }
 
   return (
-    <div>
+    <Container>
       <GoBackButton backLinkRef={backLinkRef} />
-      <img
-        src={`https://image.tmdb.org/t/p/w300${aboutMovie.poster_path}`}
-        alt=""
-      />
-      <h2>
-        {aboutMovie.title} {aboutMovie.release_date.slice(0, 4)}
-      </h2>
-      <p>Vote average: {aboutMovie.vote_average}</p>
-      <h3>Overview</h3>
-      <p>{aboutMovie.overview}</p>
-      <p>Genre: {aboutMovie.genres.map(({ name }) => name).join(' ')}</p>
-      <NavLink to={`movies/${movieId}/reviews`}>Reviews</NavLink>
-      <NavLink to={`movies/${movieId}/cast`}>Cast</NavLink>
-      <Outlet />
-      {status && <Loader />}
-    </div>
+      <Img>
+        <img
+          src={`https://image.tmdb.org/t/p/w300${aboutMovie.poster_path}`}
+          alt=""
+        />
+      </Img>
+      <MovieDetailsContainer>
+        <h2>
+          {aboutMovie.title} {aboutMovie.release_date.slice(0, 4)}
+        </h2>
+        <p>Vote average: {aboutMovie.vote_average}</p>
+        <h3>Overview</h3>
+        <p>{aboutMovie.overview}</p>
+        <Genre>
+          Genre: {aboutMovie.genres.map(({ name }) => name).join(' ')}
+        </Genre>
+        <LinkList>
+          <StyledLink to={`movies/${movieId}/reviews`}>Reviews</StyledLink>
+          <StyledLink to={`movies/${movieId}/cast`}>Cast</StyledLink>
+        </LinkList>
+        <Outlet />
+        {status && <Loader />}
+      </MovieDetailsContainer>
+    </Container>
   );
 };
+
+export default MovieDetails;

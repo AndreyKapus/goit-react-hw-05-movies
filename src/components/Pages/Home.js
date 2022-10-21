@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { fetchMovies } from 'Servises/fetchMovies';
 import { Title, MovieList, StyledLink, StyledUl } from 'Styles/Home.styled';
 
-export function PopularMovies() {
+function PopularMovies() {
   const [popMovies, setPopMovies] = useState([]);
 
   useEffect(() => {
@@ -31,3 +30,5 @@ export function PopularMovies() {
     </div>
   );
 }
+
+export default PopularMovies;

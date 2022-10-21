@@ -3,8 +3,9 @@ import { fetchMovieByQuery } from 'Servises/fetchMovies';
 import { useSearchParams } from 'react-router-dom';
 import { MoviesList } from '../MoviesSearch';
 import { Loader } from 'components/Loader';
+import { Input, Form, Button } from '../../Styles/MovieSearch.styled';
 
-export const MoviesSearch = () => {
+const MoviesSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
 
@@ -43,8 +44,8 @@ export const MoviesSearch = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Input
           type="text"
           name="query"
           value={inputSearch}
@@ -52,8 +53,8 @@ export const MoviesSearch = () => {
           placeholder="Enter movie name"
         />
 
-        <button type="submit">Search</button>
-      </form>
+        <Button type="submit">Search</Button>
+      </Form>
 
       {movies && <MoviesList movies={movies} />}
       {status && <Loader />}
@@ -61,3 +62,5 @@ export const MoviesSearch = () => {
     </>
   );
 };
+
+export default MoviesSearch;

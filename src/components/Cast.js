@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchMovieCast } from '../Servises/fetchMovies';
+import { CastContainer } from '../Styles/Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
   const { movieId } = useParams();
 
@@ -25,7 +26,7 @@ export const Cast = () => {
   return (
     <div>
       {movieCast && (
-        <div>
+        <CastContainer>
           {movieCast.map(({ name, character, img, id }) => (
             <div key={id + name}>
               <p>{name}</p>
@@ -37,8 +38,10 @@ export const Cast = () => {
               )}
             </div>
           ))}
-        </div>
+        </CastContainer>
       )}
     </div>
   );
 };
+
+export default Cast;
