@@ -16,6 +16,7 @@ export const App = () => {
           <AppBar />
         </header>
         <Routes>
+          <Route index element={<PopularMovies />} />
           <Route path="/" element={<PopularMovies />} />
           <Route path="/movies" element={<MoviesSearch />} />
           <Route path="movies/:movieId" element={<MovieDetails />}>
