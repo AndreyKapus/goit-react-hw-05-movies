@@ -6,7 +6,7 @@ import {
   List,
 } from '../Styles/MovieSearchResult.styled';
 
-export const MoviesList = ({ movies, titlePage = null }) => {
+export const MoviesList = ({ movies, titlePage }) => {
   const location = useLocation();
 
   return (
