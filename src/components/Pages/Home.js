@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchMovies } from 'Servises/fetchMovies';
 import { Title, MovieList, StyledLink, StyledUl } from 'Styles/Home.styled';
 
-function PopularMovies() {
+function Home() {
   const [popMovies, setPopMovies] = useState([]);
 
   useEffect(() => {
@@ -31,4 +31,4 @@ function PopularMovies() {
   );
 }
 
-export default PopularMovies;
+export default Home;
