@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { fetchMovies } from 'Servises/fetchMovies';
 import { Title, MovieList, StyledLink, StyledUl } from 'Styles/Home.styled';
 
@@ -27,6 +28,7 @@ function Home() {
             </MovieList>
           ))}
       </StyledUl>
+      <Outlet />
     </div>
   );
 }

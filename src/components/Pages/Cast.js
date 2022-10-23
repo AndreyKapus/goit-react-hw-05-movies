@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchMovieCast } from '../Servises/fetchMovies';
-import { CastContainer } from '../Styles/Cast.styled';
+import { fetchMovieCast } from '../../Servises/fetchMovies';
+import { CastContainer } from '../../Styles/Cast.styled';
 
 const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
