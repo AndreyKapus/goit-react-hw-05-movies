@@ -20,8 +20,6 @@ export const MovieDetails = () => {
   const location = useLocation();
   const backLinkRef = location.state?.from ?? '/';
 
-  // const movie = fetchMovieById(movieId);
-
   useEffect(() => {
     setStatus(true);
     fetchMovieById(movieId).then(movie => {
