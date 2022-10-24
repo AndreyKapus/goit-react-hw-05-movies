@@ -54,8 +54,18 @@ export const MovieDetails = () => {
           Genre: {aboutMovie.genres.map(({ name }) => name).join(' ')}
         </Genre>
         <LinkList>
-          <StyledLink to={`movies/${movieId}/reviews`}>Reviews</StyledLink>
-          <StyledLink to={`movies/${movieId}/cast`}>Cast</StyledLink>
+          <StyledLink
+            to={`movies/${movieId}/reviews`}
+            state={{ from: backLinkRef }}
+          >
+            Reviews
+          </StyledLink>
+          <StyledLink
+            to={`movies/${movieId}/cast`}
+            state={{ from: backLinkRef }}
+          >
+            Cast
+          </StyledLink>
         </LinkList>
         <Outlet />
         {status && <Loader />}
